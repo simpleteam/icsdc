@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.view.StandView;
+
 @Entity
 public class Stand {
 
@@ -26,12 +28,20 @@ public class Stand {
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
 	private Organization organization;
-	
+
 	@ManyToMany
-    @JoinTable(name = "stand_employee", 
-    	joinColumns = @JoinColumn(name = "stand_id"), 
-    	inverseJoinColumns = @JoinColumn(name = "employee_id"))
+	@JoinTable(name = "stand_employee", joinColumns = @JoinColumn(name = "stand_id"), inverseJoinColumns = @JoinColumn(name = "employee_id"))
 	private List<Employee> employees;
+
+	public Stand() {
+
+	}
+
+	public Stand(StandView standView) {
+		this.id = standView.getId();
+		this.number = standView.getNumber();
+		this.alternativeNumber = standView.getAlternativeNumber();
+	}
 
 	public long getId() {
 		return id;

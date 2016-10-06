@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.taglibs.standard.lang.jstl.EmptyOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.EmployeeDao;
 import com.dao.OrganizationDao;
@@ -18,6 +19,7 @@ import com.view.OrganizationView;
 import com.view.StandView;
 
 @Service
+@Transactional
 public class ServerRoomServiceImpl implements ServerRoomService {
 
 	@Autowired
@@ -66,6 +68,15 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 		}
 		return view;
 	}
+	
+	private List<StandView> entityToViewStands(List<Stand> stands){
+		List<StandView> view = new ArrayList<>();
+		for (Stand s : stands){
+			view.add(new StandView(s));
+		}
+		return view;
+	}
+	
 
 	@Override
 	public void addOrganization(OrganizationView organizationView) {
@@ -96,6 +107,36 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 
 	public void deleteOrganization(OrganizationView organizationView) {
 		organizationDao.delete(new Organization(organizationView));
+	}
+
+	@Override
+	public void deleteOrganization(long id) {
+		organizationDao.delete(organizationDao.get(id));
+	}
+
+	@Override
+	public void updateStand(StandView standView) {
+		standDao.update(new Stand(standView));	
+	}
+
+	@Override
+	public void deleteStand(long id) {
+		standDao.delete(standDao.get(id));	
+	}
+
+	@Override
+	public StandView getStand(long id) {
+		return new StandView(standDao.get(id));
+	}
+
+	@Override
+	public List<StandView> getAllStands() {
+		return entityToViewStands(standDao.getAll());
+	}
+
+	@Override
+	public void addStand(StandView standView) {
+		standDao.add(new Stand(standView));
 	}
 
 }

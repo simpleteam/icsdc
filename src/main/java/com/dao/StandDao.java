@@ -12,4 +12,9 @@ public interface StandDao {
 	
 	public List<Stand> getAllByEmployee(long id);
 	
+	public void update(Stand stand);
+	
+	public void delete(Stand stand);
+	
+	public List<Stand> getAll();
 }

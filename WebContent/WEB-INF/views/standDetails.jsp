@@ -12,20 +12,20 @@ prefix="form"%>
 <title>Insert title here</title>
 </head>
 <body>
-
 	<div id="content">
-	
-		<a href="add">додати організацію</a>
+		<a href="add">додати шафку</a>
    		<table id="stands" border="1" >
-   			<c:forEach items="${organizations}" var="organization">
-				<form:form action="${organization.id}" method="delete" modelAttribute="organization">
+   			<tr>
+   				<td>номер шафки</td><td>альтернативний номер шафки</td><td></td><td></td>
+   			</tr>
+   			<c:forEach items="${stands}" var="stand">
+				<form:form action="${stand.id}" method="delete" modelAttribute="stand">
 					<tr>
-						<td>${organization.name}</td><td><input type="submit" value="видалити"></td><td><a href="${organization.id}/update">змінити</a></td>
+						<td>${stand.number}</td><td>${stand.alternativeNumber}</td><td><input type="submit" value="видалити"></td><td><a href="${stand.id}/update">змінити</a></td>
 					</tr>
 				</form:form>
 			</c:forEach>
 		</table>	
 	</div>
-	
 </body>
 </html>

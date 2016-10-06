@@ -10,17 +10,16 @@ prefix="form"%>
 <title>Insert title here</title>
 </head>
 <body>
-
 	<div id="content">
-		<form:form action="/icsdc/organization/" method="POST" modelAttribute="organization">
-			Введіть назву організації:
-			<form:input path="name"/>
-			<input type="submit" value="зберегти" />
-			<input type="reset" value="очистити" />
-	
+		<form:form action="/icsdc/stand/${stand.id}" method="put" modelAttribute="stand">
+			Інвентарний номер:
+			<form:input path="number"/>
+			Альтернативний номер:
+			<form:input path="alternativeNumber"/>
+			<form:hidden path="id"/>
+			<input type="submit" value="зберегти"/>
+			<input type="reset" value="очистити"/>
 		</form:form>
 	</div>
-	
-
 </body>
 </html>

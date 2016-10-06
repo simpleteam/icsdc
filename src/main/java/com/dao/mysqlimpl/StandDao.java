@@ -31,4 +31,20 @@ public class StandDao extends Dao implements com.dao.StandDao {
 		return stands;
 	}
 
+	@Override
+	public void update(Stand stand) {
+		getSession().update(stand);
+	}
+
+	@Override
+	public void delete(Stand stand) {
+		getSession().delete(stand);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Stand> getAll() {
+		return getSession().createQuery("from Stand").list();
+	}
+
 }

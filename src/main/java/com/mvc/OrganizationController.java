@@ -68,9 +68,15 @@ public class OrganizationController {
 		return "updateOrganization";
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(value="{id}", method = RequestMethod.PUT)
 	public String processUpdateOrganization(OrganizationView organizationView, BindingResult bindingResult){
 		serverRoomServiñe.updateOrganization(organizationView);
+		return "redirect:/organization/showAll";
+	}
+	
+	@RequestMapping(value="{id}", method = RequestMethod.DELETE)
+	public String processDeleteOrganization(@PathVariable("id")long id){
+		serverRoomServiñe.deleteOrganization(id);
 		return "redirect:/organization/showAll";
 	}
 	
