@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+#content{
+
+	margin: 10% 30% ; 
+	height: 350px
+
+}
+
+#organizations, #employees, #stands{
+	
+	width: 500px;
+	
+}
