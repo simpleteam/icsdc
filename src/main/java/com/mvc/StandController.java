@@ -67,10 +67,12 @@ public class StandController {
 	}
 	
 	@RequestMapping(value="{id}", method = RequestMethod.PUT)
-	public String processUpdateStand(@PathVariable("id")long id, StandView standView, BindingResult bindingResult){
+	public String processUpdateStand(@PathVariable("id")long id, StandView standView, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()){
+			model.addAttribute("stand", standView);
 			return "stand/"+id;
 		}
+		standView.setId(id);
 		serverRoomService.updateStand(standView);
 		return "redirect:/stand/showAll";
 	}
