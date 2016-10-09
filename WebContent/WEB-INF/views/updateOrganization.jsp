@@ -11,7 +11,7 @@ prefix="form"%>
 </head>
 <body>
 	<div id="content">
-		<form:form action="/icsdc/organization/update" method="put" modelAttribute="organization">
+		<form:form action="/icsdc/organization/${organization.id}" method="put" modelAttribute="organization">
 			Введіть назву організації:
 			<form:input path="name"/>
 			<form:hidden path="id"/>
