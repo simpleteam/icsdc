@@ -28,9 +28,20 @@ public class EmployeeDao extends Dao implements com.dao.EmployeeDao {
 		return getSession().createQuery("from Employee").list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> getAllByOrganization(long id) {
 		return getSession().createQuery("from Employee e where e.organization.id = :id").setLong("id", id).list();
+	}
+
+	@Override
+	public void update(Employee employee) {
+		getSession().update(employee);
+	}
+
+	@Override
+	public void delete(Employee employee) {
+		getSession().delete(employee);
 	}
 
 }

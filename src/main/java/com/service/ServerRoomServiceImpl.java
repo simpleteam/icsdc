@@ -32,7 +32,7 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 	private OrganizationDao organizationDao;
 
 	@Override
-	public List<Employee> getEmployeesByStand(long id) {
+	public List<EmployeeView> getEmployeesByStand(long id) {
 		return null;
 	}
 
@@ -137,6 +137,26 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 	@Override
 	public void addStand(StandView standView) {
 		standDao.add(new Stand(standView));
+	}
+
+	@Override
+	public void addEmployee(EmployeeView employeeView) {
+		employeeDao.add(new Employee(employeeView));
+	}
+
+	@Override
+	public void updateEmployee(EmployeeView employeeView) {
+		employeeDao.update(new Employee(employeeView));
+	}
+
+	@Override
+	public EmployeeView getEmployee(long id) {
+		return new EmployeeView(employeeDao.get(id));
+	}
+
+	@Override
+	public void deleteEmployee(long id) {
+		employeeDao.delete(employeeDao.get(id));
 	}
 
 }

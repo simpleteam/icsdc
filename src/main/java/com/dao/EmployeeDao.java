@@ -13,5 +13,9 @@ public interface EmployeeDao {
 	public List<Employee> getAll();
 	
 	public List<Employee> getAllByOrganization(long id);
+	
+	public void update(Employee employee);
+	
+	public void delete(Employee employee);
 
 }

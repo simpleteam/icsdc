@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.view.EmployeeView;
+
 @Entity
 public class Employee {
 
@@ -34,6 +36,17 @@ public class Employee {
 	@ManyToMany(mappedBy = "employees", cascade= {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<Stand> stands;
 
+	public Employee(){
+		
+	}
+	
+	public Employee(EmployeeView employeeView){
+		this.id = employeeView.getId();
+		this.name = employeeView.getName();
+		this.middleName = employeeView.getMiddleName();
+		this.surname = employeeView.getSurname();
+	}
+	
 	public long getId() {
 		return id;
 	}

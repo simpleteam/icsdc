@@ -15,7 +15,7 @@
 				<td>Організація</td><td><a href="organization/add">додати</a></td><td><a href="organization/showAll">редагувати</a></td>
 			</tr>
 			<tr>
-				<td>Співробітник</td><td><a href="">додати</a></td><td><a href="">редагувати</a></td>
+				<td>Співробітник</td><td><a href="employee/add">додати</a></td><td><a href="employee/showAll">редагувати</a></td>
 			</tr>
 			<tr>
 				<td>Шафка</td><td><a href="stand/add">додати</a></td><td><a href="stand/showAll">редагувати</a></td>
