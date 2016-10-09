@@ -40,8 +40,9 @@ public class OrganizationController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processAddOrganization(OrganizationView organization, BindingResult bindingResult){
+	public String processAddOrganization(OrganizationView organization, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()){
+			model.addAttribute("organization", organization);
 			return "createOrganization";
 		}
 		serverRoomServiñe.addOrganization(organization);
@@ -69,7 +70,12 @@ public class OrganizationController {
 	}
 	
 	@RequestMapping(value="{id}", method = RequestMethod.PUT)
-	public String processUpdateOrganization(OrganizationView organizationView, BindingResult bindingResult){
+	public String processUpdateOrganization(@PathVariable("id")long id, OrganizationView organizationView, BindingResult bindingResult, Model model){
+		if(bindingResult.hasErrors()){
+			model.addAttribute("organization", organizationView);
+			return "updateOrganization";
+		}
+		organizationView.setId(id);
 		serverRoomServiñe.updateOrganization(organizationView);
 		return "redirect:/organization/showAll";
 	}
