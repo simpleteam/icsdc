@@ -49,4 +49,9 @@ public class StandView {
 		this.alternativeNumber = alternativeNumber;
 	}
 
+	@Override
+	public String toString() {
+		return number;
+	}
+
 }

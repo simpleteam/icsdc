@@ -47,4 +47,11 @@ public class StandDao extends Dao implements com.dao.StandDao {
 		return getSession().createQuery("from Stand").list();
 	}
 
+	@Override
+	public Stand getByNumber(String number) {
+		return (Stand) getSession().createQuery("from Stand s where s.number = :number")
+				.setString("number", number)
+				.uniqueResult();
+	}
+
 }

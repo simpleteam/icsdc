@@ -2,8 +2,10 @@ package com.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,9 +30,7 @@ public class Stand {
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
 	private Organization organization;
-
-	@ManyToMany
-	@JoinTable(name = "stand_employee", joinColumns = @JoinColumn(name = "stand_id"), inverseJoinColumns = @JoinColumn(name = "employee_id"))
+	@ManyToMany(mappedBy = "stands", cascade= {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
 	private List<Employee> employees;
 
 	public Stand() {

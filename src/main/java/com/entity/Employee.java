@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -17,7 +18,7 @@ import com.view.EmployeeView;
 
 @Entity
 public class Employee {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -33,7 +34,8 @@ public class Employee {
 	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "organization_id")
 	private Organization organization;
-	@ManyToMany(mappedBy = "employees", cascade= {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+	@ManyToMany
+	@JoinTable(name = "stand_employee", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "stand_id"))
 	private List<Stand> stands;
 
 	public Employee(){
@@ -45,6 +47,9 @@ public class Employee {
 		this.name = employeeView.getName();
 		this.middleName = employeeView.getMiddleName();
 		this.surname = employeeView.getSurname();
+		Organization organization = new Organization();
+		organization.setId(employeeView.getOrganizationId());
+		this.organization = organization;
 	}
 	
 	public long getId() {

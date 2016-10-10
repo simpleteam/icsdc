@@ -51,12 +51,10 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 
 	private List<EmployeeView> entityToViewEmployees(List<Employee> employees) {
 		List<EmployeeView> view = new ArrayList<>();
-
 		for (Employee e : employees) {
 			System.out.println(e.getMiddleName());
-			view.add(new EmployeeView(e.getId(), e.getName(), e.getMiddleName(), e.getSurname()));
+			view.add(new EmployeeView(e));
 		}
-
 		return view;
 	}
 
@@ -140,7 +138,16 @@ public class ServerRoomServiceImpl implements ServerRoomService {
 
 	@Override
 	public void addEmployee(EmployeeView employeeView) {
-		employeeDao.add(new Employee(employeeView));
+		Employee employee = new Employee(employeeView);
+		List<Stand> stands = new ArrayList<>();
+		for(String number : employeeView.getStandsNumbers()){
+			stands.add(standDao.getByNumber(number));
+			System.out.println(standDao.getByNumber(number).getId() + "-----------------------------------");
+		}		
+		employee.setStands(stands);
+		System.out.println(stands);
+		
+		employeeDao.add(employee);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.mvc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.service.ServerRoomService;
 import com.view.EmployeeView;
+import com.view.StandView;
 
 @Controller
 @RequestMapping("/employee")
@@ -35,13 +37,20 @@ public class EmployeeController {
 	
 	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String initCreateEmployee(Model model){
-		model.addAttribute("employee", new EmployeeView());
+		EmployeeView employee = new EmployeeView();
+		List<String> standsNumbers = new ArrayList<>();
+		for(StandView s: serverRoomService.getAllStands()){
+			standsNumbers.add(s.getNumber());
+		}
+		employee.setStandsNumbers(standsNumbers);
+		model.addAttribute("employee", employee);
 		return "createEmployee";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String processCreateEmployee(EmployeeView employeeView, BindingResult bindingResult, Model model){
 		if(bindingResult.hasErrors()){
+			System.out.println("Error");
 			model.addAttribute("employee", employeeView);
 			return "createEmployee";
 		}

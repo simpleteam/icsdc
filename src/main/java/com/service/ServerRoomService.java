@@ -46,4 +46,6 @@ public interface ServerRoomService {
 	
 	public void deleteStand(long id);
 	
+	
+	
 }

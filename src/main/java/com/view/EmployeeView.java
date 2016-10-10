@@ -1,5 +1,8 @@
 package com.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.entity.Employee;
 
 public class EmployeeView {
@@ -8,6 +11,8 @@ public class EmployeeView {
 	private String name;
 	private String middleName;
 	private String surname;
+	private long organizationId;
+	private List<String> standsNumbers = new ArrayList<>();
 
 	public EmployeeView() {
 
@@ -18,13 +23,7 @@ public class EmployeeView {
 		this.name = employee.getName();
 		this.middleName = employee.getMiddleName();
 		this.surname = employee.getSurname();
-	}
-
-	public EmployeeView(long id, String name, String middleName, String surname) {
-		this.id = id;
-		this.name = name;
-		this.middleName = middleName;
-		this.surname = surname;
+		this.organizationId = employee.getOrganization().getId();
 	}
 
 	public long getId() {
@@ -57,6 +56,22 @@ public class EmployeeView {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public long getOrganizationId() {
+		return organizationId;
+	}
+
+	public void setOrganizationId(long organizationId) {
+		this.organizationId = organizationId;
+	}
+
+	public List<String> getStandsNumbers() {
+		return standsNumbers;
+	}
+
+	public void setStandsNumbers(List<String> standsNumbers) {
+		this.standsNumbers = standsNumbers;
 	}
 
 }

@@ -17,4 +17,6 @@ public interface StandDao {
 	public void delete(Stand stand);
 	
 	public List<Stand> getAll();
+	
+	public Stand getByNumber(String number);
 }
