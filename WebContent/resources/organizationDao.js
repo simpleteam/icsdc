@@ -8,6 +8,7 @@ $(document).ready(function json(){
 	 //     $("#e").append("<input type='button' value='"+val.surname + " " + val.name + " " + val.middleName + " ' style='width: 300px; text-align: left;height: 25px;' />")
 	  });
 	});
+    getEmployeesByOrganization(1);
     getStandsByEmployee(1);
 });
 
