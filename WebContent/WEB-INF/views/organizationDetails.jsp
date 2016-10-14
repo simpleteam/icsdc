@@ -14,7 +14,9 @@ prefix="form"%>
 <body>
 
 	<div id="content">
-	
+		<a href="../">головна</a>
+		<br>
+		<br>
 		<a href="add">додати організацію</a>
    		<table id="stands" border="1" >
    			<c:forEach items="${organizations}" var="organization">

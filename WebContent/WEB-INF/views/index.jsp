@@ -12,7 +12,7 @@
 <script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
 <title>Insert title here</title>
 </head>
-<body >
+<body > 
 
 	<div id="content" class="form-group" >
 		Організація

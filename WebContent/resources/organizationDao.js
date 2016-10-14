@@ -3,13 +3,15 @@ $(document).ready(function json(){
 	  var items = [];		
 	  //$("#employees").empty();
 	  $.each(data, function(key, val){
-	      items.push('<li id="' + key + '">' + val + '</li>');
-	      $("#organizations").append("<option value ='"+ val.id + "'  onclick='getEmployeesByOrganization("+val.id+");'  > " + val.name + "</select>");
-	 //     $("#e").append("<input type='button' value='"+val.surname + " " + val.name + " " + val.middleName + " ' style='width: 300px; text-align: left;height: 25px;' />")
+	      items.push(val.id);
+	      $("#organizations").append("<option value ='"+ val.id + "'  onClick='getEmployeesByOrganization("+val.id+")'>" + val.name + "</option>");
+	
 	  });
+	  
+	  getEmployeesByOrganization(items[0]);
 	});
-    getEmployeesByOrganization(1);
-    getStandsByEmployee(1);
+  //  getEmployeesByOrganization(1);
+   // getStandsByEmployee(1);
 });
 
 
@@ -18,10 +20,15 @@ function getEmployeesByOrganization(target){
 	var items = [];
 	$("#employees").empty();
 	  $.each(data, function(key, val){
-	    items.push('<li id="' + val.id + '">' + val.number + '</li>');
-	    $("#employees").append("<option value ='"+ val.id + "'  onclick='getStandsByEmployee("+val.id+");'  > " + val.surname +" "+val.name + " " + val.middleName + "</select>");
+	    items.push(val.id);
+	    $("#employees").append("<option value ='"+ val.id + "'  onclick='getStandsByEmployee("+val.id+");'  > " + val.surname +" "+val.name + " " + val.middleName + "</option>");
 	  });
-    })
+	  
+	  getStandsByEmployee(items[0]);
+	 //   document.write(items[0]);
+	  
+    });
+    
 }
 
 
@@ -36,7 +43,6 @@ function getStandsByEmployee(target){
 	  });
     })
 }
-
 
 
 

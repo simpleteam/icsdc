@@ -9,6 +9,9 @@
 </head>
 <body>
 	<div id="content">
+		<a href="">головна</a>
+		<br>
+		<br>
 		<br>
 		<table id="stands" border="1" >
 			<tr>

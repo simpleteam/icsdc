@@ -13,6 +13,9 @@ prefix="form"%>
 </head>
 <body>
 	<div id="content">
+		<a href="../">головна</a>
+		<br>
+		<br>
 		<a href="add">додати шафку</a>
    		<table id="stands" border="1" >
    			<tr>
