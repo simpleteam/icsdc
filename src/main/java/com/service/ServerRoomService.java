@@ -14,8 +14,6 @@ public interface ServerRoomService {
 	
 	public List<EmployeeView> getAllEmployees();
 	
-	public List<EmployeeView> getEmployeesByStand(long id);
-	
 	public List<EmployeeView> getAllEmployeesByOrganization(long id);
 	
 	public void updateEmployee(EmployeeView employeeView);
