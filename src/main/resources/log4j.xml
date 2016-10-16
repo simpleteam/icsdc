@@ -27,7 +27,7 @@
 
     <root>
         <priority value="ERROR"/>
-        <appender-ref ref="ConsoleAppender" />
+        <appender-ref ref="application" />
     </root>
 
 </log4j:configuration>
